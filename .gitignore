@@ -11,4 +11,9 @@ __venv/
 
 draft/
 
+draft
+.venv/
 # Distribution / packaging
+
+Documentation_game.md
+guide-chess_game.md
