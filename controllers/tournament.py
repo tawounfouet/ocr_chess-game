@@ -42,11 +42,11 @@ class TournamentController:
                 self.view.display_tournament_info(tournament_id)
 
             elif choice == "4":
-                # consulter la liste des rounds d'un tournoi
-                tournament_id = input("Enter tournament ID to view rounds: ")
+                # Consult the rounds using the same public UUID displayed in the list.
+                tournament_id = self.view.input_message("Enter tournament ID to view rounds: ")
                 self.view.display_rounds_list(tournament_id)
+            elif choice == "6":
                 exit_requested = True
-
             else:
                 self.view.display_message("Invalid choice. Please try again.")
 
