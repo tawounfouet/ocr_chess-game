@@ -29,8 +29,9 @@ class Tournament:
         nb_rounds,
         players=None,
         rounds=None,
+        current_round=0,
         description="",
-        status="Done",
+        status="In progress",
         id_db = None,
         tournament_id=str(uuid.uuid4())
     ):
@@ -40,7 +41,7 @@ class Tournament:
         self.start_date = start_date # or datetime.now().strftime("%Y-%m-%d")
         self.end_date = end_date
         self.status = status
-        #
+        self.current_round = current_round
         self.description = description
         self.nb_rounds = nb_rounds
         self.players = players or []

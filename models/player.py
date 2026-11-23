@@ -10,6 +10,7 @@ class Player:
     """Player class"""
 
     players_table = db_players.table("players")
+    cache_players = {}
 
     def __init__(self, first_name, last_name, date_of_birth, player_id, score=0, id_db = None):
         self.first_name = first_name
@@ -26,8 +27,10 @@ class Player:
         return f"ID: {self.player_id}, Name: {self.full_name}"
    
 
+    
     @property
     def full_name(self):
+        """Returns the full name of the player"""
         return f"{self.first_name} {self.last_name}"
 
 
@@ -98,7 +101,7 @@ class Player:
             record["id_db"] = record.doc_id
         return record
     
-   
+    
  
        
 if __name__ == "__main__":

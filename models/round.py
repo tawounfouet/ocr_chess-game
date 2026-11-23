@@ -1,7 +1,7 @@
 from datetime import datetime
 
 class Round:
-    def __init__(self, name, start_date, end_date, matches=None, status=""):
+    def __init__(self, name, start_date, end_date=None, matches=None, status=""):
         self.name = name
         self.start_date = start_date or datetime.now().strftime("%Y-%m-%d")
         self.end_date = end_date
