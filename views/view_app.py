@@ -14,10 +14,9 @@ class ViewApp:
 
             choice = input(Fore.CYAN + "Enter your choice: " + Style.RESET_ALL)
 
-            if choice in ["1", "2", "3"]:
-                if choice == "3":
-                    print(Fore.RED + "Goodbye!")
-                    print(Style.RESET_ALL)
+            if choice in ["1", "2", "4"]:
+                if choice == "4":
+                    print(Fore.GREEN + "Goodbye!" + Style.RESET_ALL)
                 return choice
             else:
                 print(Fore.RED + "Invalid choice. Please try again.")
