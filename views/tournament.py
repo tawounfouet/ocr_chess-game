@@ -1,8 +1,12 @@
+from rich.table import Table
+from colorama import Fore, Style, Back
 from tabulate import tabulate
 from colorama import Fore, Style
 from tinydb import TinyDB, Query
 
-class TournamentView:
+from views.base import BaseView
+
+class TournamentView(BaseView):
     def __init__(self):
         self.db_tournaments = TinyDB("data/tournaments.json", indent=4)
 
@@ -182,6 +186,11 @@ class TournamentView:
     def display_message(self, message):
         print(message)
 
+    
+    # methode for input display message in the controller
+    def input_message(self, message):
+        input(message)
+
     def display_players(self, players):
         """Display the list of players"""
         if not players:
@@ -300,6 +309,71 @@ class TournamentView:
         print(f"Match: {match.player1.full_name} vs {match.player2.full_name}")
         result = input("Enter the match result: ")
         return result
+    
+
+
+    # def display_matches(self, matches):
+    #     """Display the list of matches for a round in the tournament."""
+    #     print(Back.WHITE + Fore.BLACK + "Matches for Round 1:" + Style.RESET_ALL)
+    #     print(Back.WHITE + Fore.BLACK + "---------------------" + Style.RESET_ALL)
+    #     print(Back.WHITE + Fore.BLACK + "| Player 1 | Score | Player 2 |" + Style.RESET_ALL)
+    #     print(Back.WHITE + Fore.BLACK + "---------------------" + Style.RESET_ALL)
+        
+    #     for match in matches:
+    #         player1 = match.player_1
+    #         player2 = match.player_2
+    #         p1_score = match.p1_score
+    #         p2_score = match.p2_score
+            
+    #         # Format the output with colors and style
+    #         print(f"| {Fore.BLUE}{player1}{Style.RESET_ALL} | {Fore.GREEN}{p1_score}{Style.RESET_ALL} | {Fore.BLUE}{player2}{Style.RESET_ALL} | {Fore.GREEN}{p2_score}{Style.RESET_ALL} |")
+        
+    #     print(Back.WHITE + Fore.BLACK + "---------------------" + Style.RESET_ALL)
+
+    # def display_matches(self, matches):
+    #     """Display the list of matches for a round in the tournament."""
+
+    #     # Define the headers for the table
+    #     headers = ["Player 1", "Player 2", "Score 1", "Score 2"]
+
+    #     # Create a table with the provided headers
+    #     table = self.table_settings(headers=headers, title="Matches for Round 1", items=matches)
+
+    #     # Add rows to the table with match details
+    #     for match in matches:
+    #         table.add_row(match.player_1.name, match.player_2.name, match.p1_score, match.p2_score)
+
+    #     # Render the table
+    #     print(table)
+
+    def display_matches(self, matches):
+        """Display the list of matches for a round in the tournament."""
+        
+        # Define the headers for the table
+        headers = ["Player 1", "Player 2", "Score 1", "Score 2"]
+
+        # Create a new table
+        table = Table(
+            title="Matches for Round 1",
+            padding=(0, 1),
+            show_header=True,
+            show_lines=True,
+            header_style="bold magenta",
+            title_style="bold green",
+            title_justify="center",
+            width=120,
+        )
+
+        # Add headers to the table
+        for header in headers:
+            table.add_column(header)
+
+        # Add rows to the table with match details
+        for match in matches:
+            table.add_row(match.player_1.name, match.player_2.name, match.p1_score, match.p2_score)
+
+        # Render the table
+        print(table)
 
 
 
