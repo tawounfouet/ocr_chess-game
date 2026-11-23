@@ -1,14 +1,6 @@
-import sys
-from config import ROOT_DIR
-
-sys.path.append(ROOT_DIR)
-
-# print(sys.path)
-# print(ROOT_DIR)
-
 from views.view_app import ViewApp
-from chess_game.controllers.tournament import TournamentController
-from chess_game.controllers.player import PlayerController
+from controllers.tournament import TournamentController
+from controllers.player import PlayerController
 
 
 
